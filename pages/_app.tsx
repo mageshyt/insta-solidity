@@ -7,15 +7,13 @@ import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 
 const { chains, provider } = configureChains(
-  [mainnet, polygon, optimism, arbitrum, ],
+  [mainnet, polygon, optimism, arbitrum],
   [alchemyProvider({ apiKey: "" }), publicProvider()]
-
 );
 
 const { connectors } = getDefaultWallets({
   appName: "My RainbowKit App",
   chains,
-
 });
 
 const wagmiClient = createClient({
