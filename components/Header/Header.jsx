@@ -5,7 +5,6 @@ import LogoImage from "../../assets/insta_logo.png";
 import SearchBar from "./SearchBar";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
-import { AiOutlineCloudUpload as UploadIcon } from "react-icons/ai";
 import SmallLogo from "../../assets/small_logo.png";
 import UploadPost from "../Upload/UploadPost";
 const Header = () => {
@@ -28,20 +27,17 @@ const Header = () => {
         {/* Left side  */}
         {/* logo */}
         <div
-          onClick={() => router.push("/")}
+          onClick={() => {
+            router.push("/?image/asdasda");
+            console.log("clicked ", router.asPath.includes("image"));
+          }}
           className=" relative hidden lg:block w-24 h-12 cursor-pointer"
         >
-          <Image
-            alt="logo-website"
-            src={LogoImage}
-          />
+          <Image alt="logo" src={LogoImage} layout="fill" objectFit="contain" />
         </div>
         {/* in mobile insta logo */}
         <div className="relative  lg:hidden w-12 h-12 flex-shrink-0">
-          <Image
-            alt="logo-mobile"
-            src={SmallLogo}
-          />
+          <img alt="logo-mobile" src={`${SmallLogo}`} />
         </div>
         {/* Middle */}
 
@@ -50,7 +46,7 @@ const Header = () => {
 
         {/* Buttons */}
         <div className="center space-x-4 ">
-          
+          <UploadPost />
 
           {/*  connect btn */}
           <ConnectButton />

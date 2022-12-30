@@ -27,7 +27,7 @@ const Stories = () => {
 
   return (
     <div
-      className="flex flex-row  select-none space-x-2 p-6 mt-8 rounded-xl r bg-[#1e1e1e]  
+      className="flex flex-row  select-none space-x-2 p-6 mt-8 rounded-xl  bg-[#1e1e1e]  
     border-sm overflow-x-scroll scrollbar-thin mx-4 "
     >
       {users.map(({ id, avatar, username }: any) => (

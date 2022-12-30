@@ -11,6 +11,8 @@ import { alchemyProvider } from "wagmi/providers/alchemy";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import { AppContextProvider } from "../context/context";
 import "@rainbow-me/rainbowkit/styles.css";
+import "react-toastify/dist/ReactToastify.css";
+
 const { chains, provider } = configureChains(
   [goerli, opt, localhost],
   [
