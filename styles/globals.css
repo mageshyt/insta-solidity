@@ -13,3 +13,7 @@
     @apply h-8 hover:scale-125 transition-all duration-200 ease-in-out cursor-pointer;
   }
 }
+
+.scroll-bar-hide::-webkit-scrollbar {
+  display: none;
+}

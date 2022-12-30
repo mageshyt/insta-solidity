@@ -21,10 +21,6 @@ const Stories = () => {
   };
   useEffect(() => {
     const suggestions: User[] = [...Array(20)].map((_) => createRandomUser());
-    console.log(
-      "👉 ~ file: Stories.tsx ~ line 38 ~ useEffect ~ suggestions",
-      suggestions
-    );
 
     setUsers(suggestions);
   }, []);
@@ -47,7 +43,6 @@ type StoryProps = {
   avatar: string;
 };
 const Story = ({ username, id, avatar }: StoryProps) => {
-  console.log(username);
   return (
     <div className=" flex-col center">
       <img

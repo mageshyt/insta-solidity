@@ -7,6 +7,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 import { AiOutlineCloudUpload as UploadIcon } from "react-icons/ai";
 import SmallLogo from "../../assets/small_logo.png";
+import UploadPost from "../Upload/UploadPost";
 const Header = () => {
   const session = null;
 
@@ -22,7 +23,7 @@ const Header = () => {
   }
 
   return (
-    <div className="shadow-sm border-b     sticky p-2 top-0 z-50">
+    <div className="shadow-sm border-b      sticky p-2 top-0 z-50">
       <div className=" flex items-center justify-between   mx-5">
         {/* Left side  */}
         {/* logo */}
@@ -33,8 +34,6 @@ const Header = () => {
           <Image
             alt="logo-website"
             src={LogoImage}
-            layout="fill"
-            objectFit="contain"
           />
         </div>
         {/* in mobile insta logo */}
@@ -42,8 +41,6 @@ const Header = () => {
           <Image
             alt="logo-mobile"
             src={SmallLogo}
-            className="h-10 w-10"
-            objectFit="contain"
           />
         </div>
         {/* Middle */}
@@ -53,11 +50,7 @@ const Header = () => {
 
         {/* Buttons */}
         <div className="center space-x-4 ">
-          <div className=" flex flex-col items-center">
-            <UploadIcon onClick={() => router.push("/")} className="navBtn" />
-
-            <span className="text-white hidden md:block">upload</span>
-          </div>
+          
 
           {/*  connect btn */}
           <ConnectButton />
