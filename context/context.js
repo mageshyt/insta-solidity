@@ -55,16 +55,13 @@ export const AppContextProvider = ({ children }) => {
         from: userAddress,
         gas: 300000,
       });
-      console.log(res);
-
-      await toast.promise(res, {
-        pending: "Uploading post... Please wait ⏳",
-        success: "Post uploaded successfully 🎉",
-        error: "Error uploading post ❌",
-      });
 
       // after upload post get all posts
       getAllPosts();
+
+
+
+      return res;
     } catch (err) {
       console.log(err);
     }

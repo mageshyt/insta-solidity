@@ -28,16 +28,21 @@ const Header = () => {
         {/* logo */}
         <div
           onClick={() => {
-            router.push("/?image/asdasda");
+            router.push("/?image/");
             console.log("clicked ", router.asPath.includes("image"));
           }}
-          className=" relative hidden lg:block w-24 h-12 cursor-pointer"
+          className="w-[120px]  h-[50px] center cursor-pointer"
         >
-          <Image alt="logo" src={LogoImage} layout="fill" objectFit="contain" />
+          <Image className="   " alt="logo" src={LogoImage} loading="eager" />
         </div>
         {/* in mobile insta logo */}
-        <div className="relative  lg:hidden w-12 h-12 flex-shrink-0">
-          <img alt="logo-mobile" src={`${SmallLogo}`} />
+        <div className=" ">
+          <Image
+            className="md:hidden inline-flex h-10 w-10"
+            alt="logo-mobile"
+            src={SmallLogo}
+            loading="eager"
+          />
         </div>
         {/* Middle */}
 
@@ -45,9 +50,8 @@ const Header = () => {
         <SearchBar />
 
         {/* Buttons */}
-        <div className="center space-x-4 ">
-          <UploadPost />
-
+        <UploadPost />
+        <div className="center space-x-4 hidden md:block ">
           {/*  connect btn */}
           <ConnectButton />
         </div>

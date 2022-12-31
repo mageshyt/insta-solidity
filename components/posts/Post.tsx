@@ -1,6 +1,12 @@
 import { useRouter } from "next/router";
 import React from "react";
-import { AiOutlineDollarCircle as Tip } from "react-icons/ai";
+
+import { useAccount } from "wagmi";
+
+import PostHeader from "./PostHeader";
+import PostReaction from "./PostReaction";
+import { TruncateAccount } from "../../lib/GenereateImage";
+
 type postType = {
   url: string;
   description: string;
@@ -8,26 +14,28 @@ type postType = {
   author: string;
 };
 const Post = ({ url, description, id, author }: postType) => {
-  const router = useRouter();
-  const handleTip = () => {
-    router.push(`/?tip/${id}`);
-  };
+  const { address } = useAccount();
+
   return (
     <div className="my-3 p-3  rounded-md bg-[#1a1a1a]">
-      <div className=" flex flex-col space-y-3 items- w-full justify-center">
-        {/* description */}
-        <span className="text-white text-2xl font-bold mt-2">
-          {description}
-        </span>
+      {/* post header */}
+      <PostHeader address={author} />
+
+      <div className=" flex flex-col space-y-3 mt-4 items- w-full justify-center">
         {/* image */}
         <img src={url} alt={description} className=" rounded-md" />
 
-        <div className="flex items-center justify-between mx-2">
-          {/* description */}
-          <span className="text-white text-xl mt-2">{author}</span>
+        <PostReaction id={id} author={author} />
 
-          {/*  tip */}
-          <Tip onClick={handleTip} className="text-3xl text-white navBtn" />
+        {/* description */}
+
+        <div className="flex space-x-2 items-center">
+          {/* author */}
+          <span className="text-blue-400  text-xl font-bold">
+            {TruncateAccount(author)}
+          </span>
+          {/* description */}
+          <span className="text-white text-lg font-medium">{description}</span>
         </div>
       </div>
     </div>

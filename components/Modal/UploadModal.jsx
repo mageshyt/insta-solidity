@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React, { useRef } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { useAppContext } from "../../context/context";
+import { toast } from "react-toastify";
 const UploadModal = () => {
   const { uploadPost } = useAppContext();
   const router = useRouter();
@@ -15,10 +16,21 @@ const UploadModal = () => {
   // useref
   const inputRef = useRef(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const caption = inputRef.current.value;
-    uploadPost(imagePreview, caption);
+  const handleSubmit = async (e) => {
+    const loading = toast.loading("Uploading post... Please wait ⏳");
+    try {
+      e.preventDefault();
+      const caption = inputRef.current.value;
+      const res = await uploadPost(imagePreview, caption);
+      if (res) {
+        toast.dismiss(loading);
+        toast.success("Post uploaded successfully 🎉");
+        router.back();
+      }
+    } catch (err) {
+      toast.dismiss(loading);
+      toast.error("Something went wrong ❌");
+    }
   };
   return (
     <div className="h-[520px] w-[500px] center bg-[#121212] rounded-md ">
@@ -27,17 +39,17 @@ const UploadModal = () => {
         <AiOutlineClose onClick={closeModal} className="text-2xl text-white" />
       </div>
       {/* caption */}
-      <form className="mb-20" onSubmit={handleSubmit}>
+      <form className=" " onSubmit={handleSubmit}>
         {/* preview */}
-        <div className="h-[250px] w-[300px]    space-y-3 rounded-md">
+        <div className="h-[250px] w-[300px] center flex-col    space-y-3 rounded-md">
           <img
             src={imagePreview}
             alt="preview"
-            className="  rounded-md object-cover"
+            className=" h-[200px] rounded-md object-cover"
           />
 
           {/* description */}
-          <div className=" bg-[#1a1a1a] rounded-md">
+          <div className="w-full  bg-[#1a1a1a] rounded-md">
             <textarea
               ref={inputRef}
               type="text"

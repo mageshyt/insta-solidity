@@ -11,7 +11,7 @@ Modal.setAppElement("#__next");
 const HomePage = () => {
   const router = useRouter();
   return (
-    <div className="scroll-bar-hide h-screen">
+  <div className="scrollbar-hide h-screen">
       <ToastContainer></ToastContainer>
       <div className="max-w-4xl h-full   pb-[200px] overflow-y-scroll mx-auto">
         {/* stories */}

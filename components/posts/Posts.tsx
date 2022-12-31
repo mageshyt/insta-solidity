@@ -9,7 +9,7 @@ const Posts = () => {
     console.log("👉 posts: ", posts);
   }, []);
   return (
-    <div className="  mx-4">
+    <div className="scrollbar-hide  mx-4">
       {posts.map((post: any) => {
         return <Post key={post.id} {...post} />;
       })}
